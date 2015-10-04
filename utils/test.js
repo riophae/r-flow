@@ -4,12 +4,26 @@ var test = require('tape');
 test('get max', function(t) {
   var max1 = utils.getMax([ 1, 5, 3, 7, 4 ]);
   t.equal(max1, 7);
+
+  var max2 = utils.getMax([ 2, 10 ]);
+  t.equal(max2, 10);
+
+  var max3 = utils.getMax([ 1 ]);
+  t.equal(max3, 1);
+
   t.end();
 });
 
 test('get min', function(t) {
   var min1 = utils.getMin([ 1, 5, 3, 7, 4 ]);
   t.equal(min1, 1);
+
+  var min2 = utils.getMin([ 2, 10 ]);
+  t.equal(min2, 2);
+
+  var min3 = utils.getMin([ 1 ]);
+  t.equal(min3, 1);
+
   t.end();
 });
 
@@ -19,6 +33,9 @@ test('get sum', function(t) {
 
   var sum2 = utils.getSum([ 1, 2, 4 ]);
   t.equal(sum2, 7);
+
+  var sum3 = utils.getSum([ 5 ]);
+  t.equal(sum3, 5);
 
   t.end();
 });
