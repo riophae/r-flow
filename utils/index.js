@@ -6,5 +6,6 @@ module.exports = {
   getSum: require('./getSum'),
 
   replaceString: require('./replaceString'),
-  toArray: require('./toArray')
+  toArray: require('./toArray'),
+  noop: require('./noop')
 };
