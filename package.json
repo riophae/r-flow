@@ -1,11 +1,8 @@
 {
   "name": "r-flow",
   "version": "0.0.1",
-  "description": "Async flow control utilities",
+  "description": "Useful utilities for flow control, in sync & async ways",
   "main": "lib/",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "lint": "eslint . && echo \"ESLint passed\"",
     "test": "npm run lint && tape test/*.js | tap-spec"
@@ -13,7 +10,8 @@
   "keywords": [
     "async",
     "flow",
-    "control"
+    "control",
+    "CPS"
   ],
   "author": "Riophae Lee <riophaelee@gmail.com>",
   "license": "MIT",
