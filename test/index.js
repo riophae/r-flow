@@ -11,7 +11,7 @@ test('simple sequence tasks', function(t) {
   var initialVal = 0;
 
   tasks.push(function(next, val) {
-    t.equal(val, 0);
+    t.equal(val, initialVal);
     setTimeout(next, 100, val + 1);
   });
 
