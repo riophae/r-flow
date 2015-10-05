@@ -7,5 +7,7 @@ module.exports = {
 
   replaceString: require('./replaceString'),
   toArray: require('./toArray'),
+
+  once: require('./once'),
   noop: require('./noop')
 };
