@@ -1,4 +1,4 @@
-var utils = require('./');
+var utils = require('../utils');
 var test = require('tape');
 
 test('get max', function(t) {
