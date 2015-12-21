@@ -1,6 +1,6 @@
 {
-  extends: "semistandard",
-  rules: {
+  "extends": "semistandard",
+  "rules": {
     "space-before-function-paren": [ 2, "never" ]
   }
 }
