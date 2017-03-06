@@ -9,5 +9,7 @@ module.exports = {
   toArray: require('./toArray'),
 
   once: require('./once'),
+  successOnce: require('./successOnce'),
+  either: require('./either'),
   noop: require('./noop')
 };

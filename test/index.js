@@ -77,6 +77,7 @@ test('parallel tasks', function(t) {
     return function(done) {
       t.skip('iterating');
       setTimeout(done, n, n);
+      setTimeout(done, n + 100, n); // should not be executed
     };
   });
 
@@ -96,6 +97,7 @@ test('earliest wins', function(t) {
   var delayedTasks = numbers.map(function(n) {
     return function(done) {
       setTimeout(done, n, n);
+      setTimeout(done, n + 100, n); // should not be executed
     };
   });
 
@@ -119,6 +121,7 @@ test('map', function(t) {
   r.map(numbers, function(n, done) {
     t.skip('iterating');
     setTimeout(done, n, n);
+    setTimeout(done, n + 100, n); // should not be executed
   }, function(rets) {
     timer.end();
 
@@ -138,6 +141,7 @@ test('reduce', function(t) {
   r.reduce(numbers, function(accum, n, done) {
     t.skip('n: ' + n + ' accum: ' + accum);
     setTimeout(done, n, accum + n);
+    setTimeout(done, n + 100, accum + n); // should not be executed
   }, function(ret) {
     timer.end();
 
@@ -156,6 +160,7 @@ test('repeat', function(t) {
   r.repeat(times, function(i, done) {
     arr.push(i);
     setTimeout(done, cycle);
+    setTimeout(done, cycle + 100); // should not be executed
   }, function() {
     timer.end();
 
@@ -177,6 +182,8 @@ test('until', function(t) {
   r.until(function(fail, succeed) {
     t.skip('iterating');
     setTimeout(++i < 5 ? fail : succeed, cycle);
+    setTimeout(fail, cycle + 100); // should not be executed
+    setTimeout(succeed, cycle + 100); // should not be executed
   }, function() {
     timer.end();
 
@@ -197,6 +204,8 @@ test('some', function(t) {
   r.some(numbers, function(n, fail, succeed) {
     t.skip('iterating');
     setTimeout(n === expected ? succeed : fail, n, n);
+    setTimeout(fail, n + 100, n); // should not be executed
+    setTimeout(succeed, n + 100, n); // should not be executed
   }, function(ret) {
     timer.end();
 

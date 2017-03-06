@@ -40,6 +40,39 @@ test('get sum', function(t) {
   t.end();
 });
 
+test('success once', function(t) {
+  var so = utils.successOnce();
+  var i = 0;
+  var fn = function() { i++; };
+  var succeed = so(true, fn);
+  var fail = so(false, fn);
+  fail();
+  t.equal(i, 1);
+  succeed();
+  t.equal(i, 2);
+  fail(); // should not be executed
+  t.equal(i, 2);
+  succeed(); // should not be executed
+  t.equal(i, 2);
+
+  t.end();
+});
+
+test('either', function(t) {
+  var e = utils.either();
+  var i = 0;
+  var f1 = e(function() { i += 1; });
+  var f2 = e(function() { i += 2; });
+  f1();
+  t.equal(i, 1);
+  f2(); // should not be executed
+  t.equal(i, 1);
+  f1(); // should not be executed
+  t.equal(i, 1);
+
+  t.end();
+});
+
 test('replace string', function(t) {
   var str = 'The %s brown fox jumps %s the lazy dog';
   var replaced = utils.replaceString(str, 'quick', 'over');
