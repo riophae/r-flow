@@ -1,9 +1,9 @@
 module.exports = function once(fn) {
-  fn.called = false;
+  var called = false;
 
   return function() {
-    if (fn.called) return;
-    fn.called = true;
+    if (called) return;
+    called = true;
     return fn.apply(this, arguments);
   };
 };
